@@ -1,0 +1,51 @@
+﻿@using System.Linq;
+@model List<FiveCardPokerHand>
+
+@{
+    ViewData["Title"] = "CreateHand";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Round of Poker</h2>
+<a href="https://en.wikipedia.org/wiki/List_of_poker_hands">Click here for list of poker rules</a>
+
+@if (@Model.Count > 0)
+{
+    <p>Number of cards per hand: @Model.First().NumberOfCards</p>
+}
+
+
+<container>
+    <row>
+        <column>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Player</th>
+                        <th class="text-center">Cards</th>
+                        <th class="text-center">Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 1; i <= Model.Count; i++)
+                    {
+                        <tr class="text-center">
+                            <td>@i</td>
+                            <td>
+                                @for (int j = 0; j < Model[i - 1].Cards.Count; j++)
+                                {
+                                    @Model[i - 1].Cards[j].FormattedName
+                                    if (j < Model[i - 1].Cards.Count - 1)
+                                    {
+                                        <text>, </text>
+                                    }
+                                }
+                            </td>
+                            <td>@Model[i - 1].HandRanking</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </column>
+    </row>
+</container>

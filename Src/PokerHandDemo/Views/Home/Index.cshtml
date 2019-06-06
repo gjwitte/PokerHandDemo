@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Poker Hand Demo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Five Card Poker Hand</h2>
+
+<div class="row">
+    <form method="post" action="@Url.Action("CreateRound", "Home")">
+        <label for="numberOfHands">Number of Hands to Deal:</label>
+        <input type="number" id="numberOfHands" name="numberOfHands"/>
+        <input class="btn btn-primary" type="submit" value="Deal A Hand of Poker" />
+    </form>
+</div>
+
